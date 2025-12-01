@@ -173,6 +173,33 @@ const getWeather=(codigo)=>{
 console.log(getWeather(88));
 
 
+
+
+
+
+// ==================CAMBIAR AL DINO EN EL HTML ==============================================
+
+
+// 1. identificar foto en html (linea 47)
+//<img class="img-fluid rounded" src="./public/images/dino.jpg" alt="Dinosaurio rex escribiendo código" />
+
+// 2. agregamos un identificador de imagen
+// id= "dinoFeliz"
+
+console.log ("si estas feliz escribe 1, si estas triste escribe 2")
+let triste = prompt ("Ingresa: \n1 para Feliz \n2 para Triste")
+//3.  declaramos la variable "triste"
+
+// si triste es true, se cambia la imagen que se asigno el id "dinoFeliz"
+if (triste==2){
+    const img = document.getElementById("dinoFeliz").src = "./public/images/dino-emo.png"
+    console.log ("No chilli")
+} else {
+    console.log ("Q bueno")
+}
+
+
+
 //--------------- Condicional Switch-case --------------------------
 /*
  La condicional Switch evalua una expresión y se compara
@@ -202,25 +229,193 @@ console.log(getWeather(88));
 */
 
 
-
-
-// ==================CAMBIAR AL DINO EN EL HTML ==============================================
-
-
-// 1. identificar foto en html (linea 47)
-//<img class="img-fluid rounded" src="./public/images/dino.jpg" alt="Dinosaurio rex escribiendo código" />
-
-// 2. agregamos un identificador de imagen
-// id= "dinoFeliz"
-
-console.log ("si estas feliz escribe 1, si estas triste escribe 2")
-let triste = prompt ("Ingresa: \n1 para Feliz \n2 para Triste")
-//3.  declaramos la variable "triste"
-
-// si triste es true, se cambia la imagen que se asigno el id "dinoFeliz"
-if (triste==2){
-    const img = document.getElementById("dinoFeliz").src = "./public/images/dino-emo.png"
-    console.log ("No chilli")
-} else {
-    console.log ("Q bueno")
+const getAcceslevel = (role) =>
+let getAcceslevel;
+switch ( role ) {
+    case "admin":
+        accessLevel = "Acceso completo al sistema";
+        break;
+    case "editor":
+        accessLevel = "Acceso para editar contenido";
+        break;  
+    case "viewer":
+        accessLevel = "Acceso solo para ver contenido";
+        break;
+    default:
+        accessLevel = "Acceso denegado";
 }
+return accessLevel;
+};
+console.log( getAccessLevel("editor") ); // Acceso para editar contenido
+
+
+//=================Refactorizar con Switch =============================
+/*
+const getWeather=(codigo)=>{
+     let message;
+    if(codigo===0){
+        message="Clear Sky";
+    }else if( codigo===1 ||codigo===2 ||codigo===3  ){
+        message="Mainly clear, partly cloudy, and overcast";
+    }else if(codigo===45 || codigo===48){
+        message="Fog and depositing rime fog";
+    }else{
+        message="no definido";
+    }
+    return message;
+
+*/
+
+
+const obtenerClima =(codigo) =>
+    let getClima;
+switch ( codigo ) {
+    case "0":
+        accessLevel = "Acceso completo al sistema";
+        break;
+    case "1 || 2  || 3":
+        accessLevel = "Acceso para editar contenido";
+        break;  
+    case "viewer":
+        accessLevel = "Acceso solo para ver contenido";
+        break;
+    default:
+        accessLevel = "Acceso denegado";
+}
+return accessLevel;
+
+};
+
+console.log( getAccessLevel("admin") ); // Acceso completo al sistema
+console.log( getAccessLevel("super_admin") ); // Acceso completo al sistema
+console.log( getAccessLevel("editor") ); // Acceso para editar contenido
+console.log( getAccessLevel("customer") ); // Acceso denegado
+
+
+/*
+ Refactorizar la función getWeather usando switch-case
+*/
+//const getWeatherSwitch=(codigo)=>
+    const getWeatherSwitch=(codigo)=>{
+     let message;
+     switch ( codigo){
+        case 0 :
+            message="Clear Sky";
+            break
+        case 1:
+        case 2:
+        case 3:
+            message="Mainly clear, partly cloudy, and overcast";
+            break;
+        case 45:
+        case 48: 
+            message="Fog and depositing rime fog";
+            break
+        default :
+            message="no definido";
+     }
+     return message;  
+    } 
+
+console.log (getWeatherSwitch(45));
+
+    const getWeatherSwitch2=(codigo)=>{
+     switch ( codigo){
+        case 0 :
+            return "Clear Sky";
+        case 1:
+        case 2:
+        case 3:
+            return "Mainly clear, partly cloudy, and overcast";
+        case 45:
+        case 48: 
+            return "Fog and depositing rime fog";
+        default :
+            return "no definido";
+     } 
+    }
+console.log (getWeatherSwitch2(0));
+
+// ==========================================================
+
+/*
+ Dado un número entero, imprimir:
+
+ "Negativo":  si el número es menor a 0.
+ "Cero":  si el número es  0.
+ "Positivo":  si el número es mayor a cero pero menor a 100.
+ "Grande": si el número es mayor o igual a 100.
+ */
+function clasificarNumeroIfElse(numero) {
+    if (numero < 0) {
+      return "Negativo";
+    } else if (numero === 0) {
+      return "Cero";
+    } else if (numero > 0 && numero < 100) {
+      return "Positivo";
+    } else {
+      return "Grande";
+    }
+  }
+  
+  console.log(clasificarNumeroIfElse(-5));   // Negativo
+  console.log(clasificarNumeroIfElse(0));    // Cero
+  console.log(clasificarNumeroIfElse(50));   // Positivo
+  console.log(clasificarNumeroIfElse(100));  // Grande
+
+  // ----- Function Switch ----------
+function evaluarElNumeroSwitch(numero) {
+
+    switch ( true ) {
+        case (numero < 0):
+            mensaje = "Negativo";
+            break;
+        case (numero === 0):
+            mensaje = "Cero";
+            break;
+        case (numero >0 && numero < 100):
+            mensaje = "Positivo";
+            break;
+        case (numero >= 100):
+            mensaje = "Grande";
+            break;
+        default:
+            mensaje = "Numero desconocido";
+    }
+    return mensaje;
+};
+
+console.log(evaluarElNumeroSwitch(-45) ); // Negativo
+console.log(evaluarElNumeroSwitch(0) ); // Cero
+console.log(evaluarElNumeroSwitch(45) ); // Positivo
+console.log(evaluarElNumeroSwitch(100) ); // Grande
+
+
+
+// ------------------------ Operador ternario --------------------------
+/*
+ Es el único operador de JavaScript que tiene 3 operandos.
+ Generalmente se utiliza como opción a la sentencia if-else.
+
+ Sintaxis:
+  condición ? expresiónSiCondiciónEsVerdadera : expresionSiCondiciónEsFalsa; 
+
+*/
+
+
+const votingEligibility = (age) => {
+    return age >= 18 ? "Puede votar" : "No puede votar";
+}
+
+console.log(votingEligibility(20)); // Puede votar
+console.log(votingEligibility(16)); // No puede votar
+
+/*
+ Realizar una función que reciba un número y retorne
+ "Par" si el número es par o "Impar" si el número es impar.
+ Usar el operador ternario.
+*/
+const numerosPar = (num) => {
+    return num%2 === 0 ? "El número es par ;)" : "No es par :v";
+}
+console.log(numerosPar(14));
