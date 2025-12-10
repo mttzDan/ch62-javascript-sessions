@@ -1,0 +1,4 @@
+#Se ignora la carpeta de dependencias de NMP
+
+
+node_modules
